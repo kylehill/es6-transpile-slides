@@ -117,7 +117,7 @@ var slides = [
     ]
   },
   {
-    title: "don't worry there's more",
+    title: "yeah don't worry there's more",
     p: [
       "<span class='mono'>function (a, ...b) {}",
       "<span class='mono'>function (a = 1) {}",
@@ -131,7 +131,7 @@ var slides = [
     content: "<h2>Polyfills won't work for syntactical changes</h2>"
   },
   {
-    title: "<span class='blue'>compile</span> (v.)",
+    title: "<span class='blue'>compile</span> <em>(v.)</em>",
     p: [
       "the act of using an automated program",
       "to convert code from one (human-readable) programming language",
@@ -139,7 +139,21 @@ var slides = [
     ]
   },
   {
-    
+    title: "Compilation",
+    p: [
+      "Static code analysis prevents some runtime errors",
+      "Compiler optimizes for performance"
+    ]
+  },
+  {
+    title: "Compilation",
+    p: [
+      "Static code analysis prevents some runtime errors",
+      "Compiler optimizes for performance",
+      "Initial setup costs can be prohibitive",
+      "Debugging can be chore",
+      "Output difficult/impossible to understand"
+    ]
   }
 ]
 
