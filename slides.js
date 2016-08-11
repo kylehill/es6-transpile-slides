@@ -250,7 +250,7 @@ var slides = [
       "For each feature:",
       "<span class='purple'>Raw</span>: ((es6 / es5) + (es6-at-scale / es5-at-scale))",
       "<span class='purple'>Impact</span>: Math.min((es5 / 250), 1)",
-      "<span class='purple'>Feature</span>: 100 - (50 * ((2 - <em>raw</em>) * <em>impact</em>))",
+      "<span class='purple'>Feature</span>: 100 - (50 * ((2 - <span class='purple'>raw</span>) * <span class='purple'>impact</span>))",
       "Produces a score between 0-100"
     ]
   },
@@ -277,6 +277,23 @@ code: function() {
   function c () {
     var _a = 789
   }
+}
+  },
+  {
+    title: "template strings - <es6/>",
+    hasCode: true,
+code: function() {
+  var x = "b"
+  var y = `a${x}c`
+}
+  },
+  {
+    title: "template strings - <es5/>",
+    score: 94,
+    hasCode: true,
+code: function() {
+  var x="b";
+  var y="a"+x+"c";
 }
   },
   {
@@ -854,11 +871,24 @@ code: function() {
     content: "<h2>#1<br/><span class='purple'>All things being equal, it is a better practice to write JS code in JavaScript than an adjunct language.</h2>"
   },
   {
-    title: "except that...",
+    title: "Consider transpilation",
     p: [
-      "If we're going always to transpile our code to target older ES versions, why not choose a language with less wat",
-      "Modern JS development often necessitates a build chain -- you have twenty other dependencies",
-      "People like programming with new toys"
+      "Complexity is reduced",
+      "<span class='purple'>If we're going always to transpile our code to target older ES versions, why not choose a language with less wat</span>",
+    ]
+  },
+  {
+    title: "Consider transpilation",
+    p: [
+      "Dependencies are removed",
+      "<span class='purple'>Modern JS development often necessitates a build chain -- you have twenty other dependencies</span>",
+    ]
+  },
+  {
+    title: "Consider transpilation",
+    p: [
+      "Easier to hire for/onboard",
+      "<span class='purple'>People like programming with new toys</span>"
     ]
   },
   {
@@ -866,19 +896,32 @@ code: function() {
     content: "<h2>#2<br/><span class='purple'>Page weight inflation is bad.</h2>"
   },
   {
-    title: "except that...",
+    title: "Living with large page weight",
     p: [
-      "Programming is always about tradeoffs, and developer happiness is as finite/valuable a resource as perf",
-      "Product decisions may require platform proliferation, and you might not need to worry about mobile devices",
-      "Accessibility is something to aim for, but the realities of 'whoever ships wins' may apply too"
+      "Makes your page less performant",
+      "<span class='purple'>Programming is always about tradeoffs, and developer happiness is as finite/valuable a resource as perf</span>",
+    ]
+  },
+  {
+    title: "Living with large page weight",
+    p: [
+      "Murders mobile data plans",
+      "<span class='purple'>Product decisions may require platform proliferation, and you might not need to worry about mobile devices</span>",
+    ]
+  },
+  {
+    title: "Living with large page weight",
+    p: [
+      "Reduces accessibility",
+      "<span class='purple'>Accessibility is good! And it's often something to aim for, but the realities of 'whoever ships wins' may apply too</span>"
     ]
   },
   {
     title: "<span class='purple'>Conclusions</span>",
     p: [
       "Transpilation isn't a panacea",
-      "Investigate what your tools are actually doing",
-      "Be sensible with your tradeoffs"
+      "Be sensible with your tradeoffs",
+      "Investigate what your tools are actually doing"
     ]
   }
 ]
