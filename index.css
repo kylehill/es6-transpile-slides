@@ -5,14 +5,14 @@
 }
 
 body {
-  background: #333;
+  background: white;
 }
 
 #container {
   height: 100vh;
   width: 100%;
-  background: #333;
-  color: #EEE;
+  background: white;
+  color: #333;
 }
 
 .slide {
@@ -25,7 +25,7 @@ body {
 
 .slide.active {
   display: block;
-  background: #333;
+  background: white;
   height: 100vh;
 }
 
@@ -131,7 +131,7 @@ li {
 }
 
 .purple {
-  color: rgb(168, 168, 223);
+  color: rgb(145, 38, 143);
 }
 
 .strike {
