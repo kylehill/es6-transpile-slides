@@ -22,7 +22,11 @@ var slides = [
   },
   {
     title: "tl;dw",
-    content: "<h2>Don't use <span class='mono'>class</span> right now<br/>or maybe ever</h2>"
+    content: "<h2>Don't use <span class='mono'>class</span> right now<br/>(or maybe ever)</h2>"
+  },
+  {
+    feature: true,
+    content: "<h2>History Lesson!</h2>"
   },
   {
     title: "JavaScript",
@@ -178,6 +182,10 @@ var slides = [
   {
     feature: true,
     image: "images/babel.png"
+  },
+  {
+    feature: true,
+    image: "images/cost.png"
   },
   {
     feature: true,
@@ -865,6 +873,14 @@ code: function() {
       "Accessibility is something to aim for, but the realities of 'whoever ships wins' may apply too"
     ]
   },
+  {
+    title: "<span class='purple'>Conclusions</span>",
+    p: [
+      "Transpilation isn't a panacea",
+      "Investigate what your tools are actually doing",
+      "Be sensible with your tradeoffs"
+    ]
+  }
 ]
 
 

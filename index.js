@@ -20,8 +20,13 @@ $(document).on("ready", function(){
     }
   })
 
-  $(window).on("click", function(evt){
+  $("body").on("click", function(evt){
     nextSlide()
+  })
+
+  $("code").on("click", function(evt){
+    evt.preventDefault()
+    return false
   })
 
   var backSlide = function() {
