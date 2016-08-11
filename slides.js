@@ -141,8 +141,8 @@ var slides = [
   {
     title: "Compilation",
     p: [
-      "Static code analysis prevents some runtime errors",
-      "Compiler optimizes for performance"
+      "<span class='green'>Static code analysis prevents some runtime errors</span>",
+      "<span class='green'>Compiler optimizes for performance</span>"
     ]
   },
   {
@@ -150,11 +150,253 @@ var slides = [
     p: [
       "Static code analysis prevents some runtime errors",
       "Compiler optimizes for performance",
-      "Initial setup costs can be prohibitive",
-      "Debugging can be chore",
-      "Output difficult/impossible to understand"
+      "<span class='red'>Initial setup costs can be prohibitive</span>",
+      "<span class='red'>Debugging can be onerous</span>",
+      "<span class='red'>Output difficult/impossible to understand</span>"
     ]
+  },
+  {
+    title: "<span class='blue'>transpile</span> <em>(v.)</em>",
+    p: [
+      "the act of using an automated program",
+      "to convert code from one (human-readable) programming language",
+      "to another language at relatively <span class='blue'>the same level of abstraction</span>"
+    ]
+  },
+  {
+    feature: true,
+    content: "<h2>There are so, so many<br/>transpile-to-JavaScript languages</h2>"
+  },
+  {
+    feature: true,
+    image: "images/languages.png"
+  },
+  {
+    feature: true,
+    content: "<h2>Let's just transpile <span class='green'>ES6</span> into <span class='blue'>ES5</span>"
+  },
+  {
+    feature: true,
+    image: "images/babel.png"
+  },
+  {
+    feature: true,
+    content: "<h1>Two Big Important Assumptions</h1>"
+  },
+  {
+    feature: true,
+    content: "<h2>#1<br/><span class='purple'>All things being equal, it is a better practice to write JS code in JavaScript than an adjunct language.</h2>"
+  },
+  {
+    title: "JS > transpilation",
+    p: [
+      "Complexity is reduced",
+      "Dependencies are removed",
+      "Easier to hire for/onboard"
+    ]
+  },
+  {
+    feature: true,
+    content: "<h2>#2<br/><span class='purple'>Page weight inflation is bad.</h2>"
+  },
+  {
+    title: "Large page weight",
+    p: [
+      "Makes your page less performant",
+      "Murders mobile data plans",
+      "Reduces accessibility"
+    ]
+  },
+  {
+    title: "Finally getting around to my thesis",
+    p: [
+      "<span class='purple'>Q: How can we transpile <es6 /> into <es5 /> without seeing substantial page weight inflation?</span>"
+    ]
+  },
+  {
+    title: "Finally getting around to my thesis",
+    p: [
+      "Q: How can we transpile <es6/> into <es5/> without seeing substantial page weight inflation?",
+      "<span class='purple'>A: Find features that transpile well and embrace them first.</span>"
+    ]
+  },
+  {
+    title: "Finally getting around to my thesis",
+    p: [
+      "Q: How can we transpile <es6/> into <es5/> without seeing substantial page weight inflation?",
+      "A: Find features that transpile well and embrace them first.",
+      "<span class='purple'>And watch out for economies of scale!</span>"
+    ]
+  },
+  {
+    title: "Let's do science!",
+    p: [
+      "Step 1: Write <es6/> code that includes a single feature",
+      "Step 2: Write code that includes a hundred instances of that same feature",
+      "Step 3: Transpile both into <es5/>"
+    ]
+  },
+  {
+    title: "Let's do science!",
+    p: [
+      "For each feature:",
+      "<span class='purple'>Raw</span>: ((es6 / es5) + (es6-at-scale / es5-at-scale))",
+      "<span class='purple'>Impact</span>: Math.min((es5 / 250), 1)",
+      "<span class='purple'>Feature</span>: 100 - (50 * ((2 - <em>raw</em>) * <em>impact</em>))",
+      "Produces a score between 0-100"
+    ]
+  },
+  {
+    title: "const/let - <es6/>",
+    hasCode: true,
+code: function() {
+  const a = 123
+  let b = 456
+
+  function c () {
+    const a = 789
   }
+}
+  },
+  {
+    title: "const/let - <es5/>",
+    score: 100,
+    hasCode: true,
+code: function() {
+  var a = 123
+  var b = 456
+  
+  function c () {
+    var _a = 789
+  }
+}
+  },
+  {
+    title: "spread (array merging) - <es6/>",
+    hasCode: true,
+code: function () {
+  var x = [1, 2, ...[3, 4, 5], 6, 7]
+}
+  },
+  {
+    title: "spread (array merging) - <es5/>",
+    score: 99,
+    hasCode: true,
+code: function () {
+  var x = [1, 2].concat([3, 4, 5], [6, 7]);
+}
+  },
+  {
+    title: "spread (function calls) - <es6/>",
+    hasCode: true,
+code: function () {
+  var x = function(){}
+  x(...[1,2,3])
+}
+  },
+  {
+    title: "spread (function calls) - <es5/>",
+    score: 98,
+    hasCode: true,
+code: function () {
+  var x = function x(){}
+  x.apply(undefined,[1,2,3]);
+}
+  },
+  {
+    title: "spread (string) - <es6/>",
+    slideClass: "bad",
+    hasCode: true,
+code: function () {
+  var a = ["a", ..."bcd", "e"]
+}
+  },
+  {
+    title: "spread (string) - <es5/>",
+    score: 31,
+    slideClass: "bad",
+    hasCode: true,
+code: function () {
+  function _toConsumableArray(arr){
+    if(Array.isArray(arr)){
+      for(var i=0,arr2=Array(arr.length);i<arr.length;i++){
+        arr2[i]=arr[i];
+      }
+      return arr2;
+    }
+    else{
+      return Array.from(arr);
+    }
+  }
+  var x=["a"].concat(_toConsumableArray("bcd"),["e"]);
+}
+  },
+  {
+    title: "spread (unknown) - <es6/>",
+    slideClass: "bad",
+    hasCode: true,
+code: function (a) {
+  return [...a]
+}
+  },
+  {
+    title: "spread (unknown) - <es5/>",
+    score: 31,
+    slideClass: "bad",
+    hasCode: true,
+code: function (a) {
+  function _toConsumableArray(arr){
+    if(Array.isArray(arr)){
+      for(var i=0,arr2=Array(arr.length);i<arr.length;i++){
+        arr2[i]=arr[i];
+      }
+      return arr2;
+    }
+    else{
+      return Array.from(arr);
+    }
+  }
+  return [].concat(_toConsumableArray(a));
+}
+  },
+  {
+    title: "object (destructuring) - <es6/>",
+    hasCode: true,
+code: function () {
+  var a = "b"
+  var c = "d"
+  var e = { a, c }
+}
+  },
+  {
+    title: "object (destructuring) - <es5/>",
+    score: 93,
+    hasCode: true,
+code: function () {
+  var a = "b";
+  var c = "d";
+  var e = { a: a, c: c };
+}
+  },
+  {
+    title: "object (shorthand methods) - <es6/>",
+    hasCode: true,
+code: function () {
+  var a = { b() { return "c" } }
+}
+  },
+  {
+    title: "object (shorthand methods) - <es5/>",
+    score: 92,
+    hasCode: true,
+code: function () {
+  var a = { 
+    b: function b(){
+      return"c";
+    }
+  };
+}
+  },
 ]
 
 

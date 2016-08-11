@@ -29,7 +29,7 @@
     {{else}}
     <div class="slide {{slideClass}}">
       {{#if title}}
-      <div class="title">{{{ title }}}</div>
+      <div class="title">{{{ title }}}{{#if score}}<div class="score">{{score}}</div>{{/if}}</div>
       {{/if}}
 
       <div class="content">
@@ -51,10 +51,9 @@
         </ul>
         {{/if}}
 
-        {{#if code}}
+        {{#if hasCode}}
         <div class="code">
-        <pre><code class="language-{{#if language}}{{language}}{{else}}javascript{{/if}}">{{#each code}}{{ this }}
-{{/each}}</code></pre>
+        <pre><code class="language-{{#if language}}{{language}}{{else}}javascript{{/if}}">{{codeHelper code}}</code></pre>
         </div>
         {{/if}}
 
@@ -100,6 +99,10 @@
     }
 
     return ""
+  })
+
+  Handlebars.registerHelper("codeHelper", function(value){
+    return value.toString()
   })
   </script>
 
