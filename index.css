@@ -36,7 +36,7 @@ body {
   margin-left: 2vh;
   padding-right: 3vh;
   font-size: 7vh;
-  border-bottom: solid 1px #EEE;
+  border-bottom: solid 1px #666;
 }
 
 .score {
@@ -149,7 +149,7 @@ code {
 }
 
 .code {
-  border: solid 1px #EEE;
+  border: solid 1px #666;
   border-radius: 10px;
   padding: 0vh 3%;
   margin: 0 2%;
@@ -159,10 +159,10 @@ code {
 .mono {
   font-family: Menlo;
   font-weight: normal;
-  color: rgb(53, 217, 168);
-  background: rgb(8, 8, 6);
+  color: rgb(202, 38, 87);
+  background: rgb(247, 247, 249);
   padding: 5px 10px;
-  border: solid 1px rgb(30, 30, 23);
+  border: solid 1px rgb(225, 225, 232);
   border-radius: 3px;
   font-size: .8em;
 }
