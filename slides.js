@@ -272,6 +272,55 @@ code: function() {
 }
   },
   {
+    title: "fat arrow (ordinary) - <es6/>",
+    hasCode: true,
+code: function() {
+  var a = (x) => x * 2
+  var b = x => x * 2
+  var c = x => {
+    return x * 2
+  }
+}
+  },
+  {
+    title: "fat arrow (ordinary) - <es5/>",
+    score: 92,
+    hasCode: true,
+code: function() {
+  function a(x) { return x * 2 }
+  function b(x) { return x * 2 }
+  function c(x) { return x * 2 }
+}
+  },
+  {
+    title: "fat arrow (this) - <es6/>",
+    hasCode: true,
+code: function() {
+  return {
+    a: "x",
+    b: function() {
+      return () => this.a
+    }
+  }
+}
+  },
+  {
+    title: "fat arrow (this) - <es5/>",
+    score: 85,
+    hasCode: true,
+code: function() {
+  return {
+    a: "x",
+    b: function b(){
+      var _this=this;
+      return function(){
+        return _this.a;
+      }
+    }
+  };
+}
+  },
+  {
     title: "spread (array merging) - <es6/>",
     hasCode: true,
 code: function () {
@@ -536,7 +585,286 @@ code: function (a) {
   }
 }
   },
+  {
+    title: "destructuring (from object) - <es6/>",
+    hasCode: true,
+code: function(i) {
+  var {a,b,c} = i
+}
+  },
+  {
+    title: "destructuring (from object) - <es5/>",
+    score: 87,
+    hasCode: true,
+code: function (i){
+  var a=i.a;
+  var b=i.b;
+  var c=i.c;
+}
+  },
+  {
+    title: "destructuring (from inline array) - <es6/>",
+    hasCode: true,
+code: function() {
+  var [a,b,c] = [1,2,3]
+}
+  },
+  {
+    title: "destructuring (from inline array) - <es5/>",
+    score: 93,
+    hasCode: true,
+code: function (){
+  var a=1, b=2, c=3;
+}
+  },
+  {
+    title: "destructuring (from inline string) - <es6/>",
+    hasCode: true,
+code: function() {
+  var [a,b,c] = "str"
+}
+  },
+  {
+    title: "destructuring (from inline string) - <es5/>",
+    score: 11,
+    slideClass: "bad",
+    hasCode: true,
+code: function (){
+  var _slicedToArray=function(){
+    function sliceIterator(arr,i){
+      var _arr=[];
+      var _n=true;
+      var _d=false;
+      var _e=undefined;
+      try{
+        for(var _i=arr[Symbol.iterator](),_s;
+            !(_n=(_s=_i.next()).done);
+            _n=true){
+          _arr.push(_s.value);
+          if(i&&_arr.length===i)break;
+        }
+      }
+      catch(err){
+        _d=true;
+        _e=err;
+      }
+      finally{
+        try{
+          if(!_n&&_i["return"]) _i["return"]();
+        }
+        finally{
+          if(_d) throw _e;
+        }
+      }
+      return _arr;
+    }
 
+    return function(arr,i){
+      if(Array.isArray(arr)){
+        return arr;
+      }
+      else if(Symbol.iterator in Object(arr)){
+        return sliceIterator(arr,i);
+      }
+      else{
+        throw new TypeError("Invalid attempt to destructure non-iterable instance");
+      }
+    };
+  }();
+  var _str="str";
+  var _str2=_slicedToArray(_str,3);
+  var a=_str2[0];
+  var b=_str2[1];
+  var c=_str2[2];
+}
+  },
+  {
+    title: "generator - <es6/>",
+    hasCode: true,
+code: function* () {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+  },
+  {
+    title: "generator - <es5/>",
+    score: 14,
+    slideClass: "bad",
+    hasCode: true,
+code: function () {
+  var a=regeneratorRuntime.mark(function a(){
+    return regeneratorRuntime.wrap(function a$(_context){
+      while(1){
+        switch(_context.prev=_context.next){
+          case 0:
+            _context.next=2;
+            return 1;
+          case 2:
+            _context.next=4;
+            return 2;
+          case 4:
+            _context.next=6;
+            return 3;
+          case 6:
+          case"end":
+            return _context.stop();
+        }
+      }
+    },a,this);
+  });
+}
+  },
+  {
+    feature: true,
+    content: "<h2>pssst... regeneratorRuntime requires the <span class='mono'>babel-polyfill</span></h2>"
+  },
+  {
+    title: "class (empty) - <es6/>",
+    hasCode: true,
+code: function (){
+  class a {}
+}
+  },
+  {
+    title: "class (empty) - <es5/>",
+    score: 35,
+    slideClass: "iffy",
+    hasCode: true,
+code: function() {
+  function _classCallCheck(instance,Constructor){
+    if(!(instance instanceof Constructor)){
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var a=function a(){_classCallCheck(this,a);};
+}
+  },
+  {
+    title: "class (methods) - <es6/>",
+    hasCode: true,
+code: function (){
+  class a { b(){} }
+}
+  },
+  {
+    title: "class (methods) - <es5/>",
+    score: 10,
+    slideClass: "bad",
+    hasCode: true,
+code: function() {
+  var _createClass=function(){
+    function defineProperties(target,props){
+      for(var i=0;i<props.length;i++){
+        var descriptor=props[i];
+        descriptor.enumerable=descriptor.enumerable||false;
+        descriptor.configurable=true;
+        if("value"in descriptor)descriptor.writable=true;
+        Object.defineProperty(target,descriptor.key,descriptor);
+      }
+    }
+    return function(Constructor,protoProps,staticProps){
+      if(protoProps) defineProperties (Constructor.prototype,protoProps);
+      if(staticProps) defineProperties (Constructor,staticProps);
+      return Constructor
+    ;}
+  ;}();
+  function _classCallCheck(instance,Constructor){
+    if(!(instance instanceof Constructor)){
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var a=function(){
+    function a(){
+      _classCallCheck(this,a);
+    }
+    _createClass(a,[
+      { key:"b",value:function b(){} }
+    ]);
+    return a;
+  }();
+}
+  },
+  {
+    title: "class (extends) - <es6/>",
+    hasCode: true,
+code: function (){
+  class a { }
+  class b extends a { }
+}
+  },
+  {
+    title: "class (extends) - <es5/>",
+    score: 6,
+    slideClass: "bad",
+    hasCode: true,
+code: function() {
+  function _possibleConstructorReturn(self,call){
+    if(!self){
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+    return call&&(typeof call==="object"||typeof call==="function")?call:self;
+  }
+  function _inherits(subClass,superClass){
+    if(typeof superClass!=="function"&&superClass!==null){
+      throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);
+    }
+    subClass.prototype=Object.create(superClass&&superClass.prototype,{
+      constructor:{
+        value:subClass,
+        enumerable:false,
+        writable:true,
+        configurable:true
+      }
+    });
+    if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;
+  }
+  function _classCallCheck(instance,Constructor){
+    if(!(instance instanceof Constructor)){
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  var a=function a(){
+    _classCallCheck(this,a);
+  };
+  var b=function(_a){
+    _inherits(b,_a);
+    function b(){
+      _classCallCheck(this,b);
+      return _possibleConstructorReturn(this,Object.getPrototypeOf(b).apply(this,arguments));
+    }
+    return b;
+  }(a);
+}
+  },
+  {
+    feature: true,
+    content: "<h2>So, about those assumptions...</h2>"
+  },
+  {
+    feature: true,
+    content: "<h2>#1<br/><span class='purple'>All things being equal, it is a better practice to write JS code in JavaScript than an adjunct language.</h2>"
+  },
+  {
+    title: "except that...",
+    p: [
+      "If we're going always to transpile our code to target older ES versions, why not choose a language with less wat",
+      "Modern JS development often necessitates a build chain -- you have twenty other dependencies",
+      "People like programming with new toys"
+    ]
+  },
+  {
+    feature: true,
+    content: "<h2>#2<br/><span class='purple'>Page weight inflation is bad.</h2>"
+  },
+  {
+    title: "except that...",
+    p: [
+      "Programming is always about tradeoffs, and developer happiness is as finite/valuable a resource as perf",
+      "Product decisions may require platform proliferation, and you might not need to worry about mobile devices",
+      "Accessibility is something to aim for, but the realities of 'whoever ships wins' may apply too"
+    ]
+  },
 ]
 
 
