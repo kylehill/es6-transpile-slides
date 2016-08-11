@@ -397,6 +397,146 @@ code: function () {
   };
 }
   },
+  {
+    title: "object (variable properties) - <es6/>",
+    hasCode: true,
+code: function () {
+  var a = "b"
+  var c = { [a]: "d" }
+}
+  },
+  {
+    title: "object (shorthand methods) - <es5/>",
+    score: 24,
+    slideClass: "bad",
+    hasCode: true,
+code: function () {
+  function _defineProperty(obj,key,value){
+    if(key in obj){
+      Object.defineProperty(obj,key,{
+        value:value,
+        enumerable:true,
+        configurable:true,
+        writable:true
+      });
+    }
+    else{
+      obj[key]=value;
+    }
+    return obj;
+  }
+  var a="b";var c=_defineProperty({},a,"d");
+}
+  },
+  {
+    title: "params (rest) - <es6/>",
+    hasCode: true,
+code: function (a, ...b) {
+  return b
+}
+  },
+  {
+    title: "params (rest) - <es5/>",
+    score: 53,
+    slideClass: "iffy",
+    hasCode: true,
+code: function (a) {
+  for(var _len=arguments.length, b = Array(_len>1?_len-1:0), _key=1;
+      _key<_len;
+      _key++){
+    b[_key-1]=arguments[_key];
+  }
+  return b;
+}
+  },
+  {
+    title: "params (defaults) - <es6/>",
+    hasCode: true,
+code: function (a = 1, b = 2) {
+  return a + b
+}
+  },
+  {
+    title: "params (default) - <es5/>",
+    score: 44,
+    slideClass: "iffy",
+    hasCode: true,
+code: function () {
+  var a=(arguments.length<=0||arguments[0]===undefined)
+    ? 1
+    : arguments[0];
+  var b=(arguments.length<=1||arguments[1]===undefined)
+    ? 2
+    : arguments[1];
+  return a+b;
+}
+  },
+  {
+    title: "for-of (inline) - <es6/>",
+    hasCode: true,
+code: function () {
+  for (var i of [1, 2, 3]) {
+    console.log(i)
+  }
+}
+  },
+  {
+    title: "for-of (inline) - <es5/>",
+    score: 77,
+    hasCode: true,
+code: function () {
+  var _arr=[1,2,3];
+  for(var _i=0;_i<_arr.length;_i++){
+    var i=_arr[_i];
+    console.log(i);
+  }
+}
+  },
+  {
+    title: "for-of (variable) - <es6/>",
+    hasCode: true,
+code: function (a) {
+  for (var i of a) {
+    console.log(i)
+  }
+}
+  },
+  {
+    title: "for-of (variable) - <es5/>",
+    score: 7,
+    slideClass: "bad",
+    hasCode: true,
+code: function (a) {
+  var _iteratorNormalCompletion=true;
+  var _didIteratorError=false;
+  var _iteratorError=undefined;
+  try{
+    for(var _iterator=a[Symbol.iterator](),_step;
+        !(_iteratorNormalCompletion=(_step=_iterator.next()).done);
+        _iteratorNormalCompletion=true){
+      var i=_step.value;
+      console.log(i);
+    }
+  }
+  catch(err){
+    _didIteratorError=true;
+    _iteratorError=err;
+  }
+  finally{
+    try{
+      if(!_iteratorNormalCompletion&&_iterator.return){
+        _iterator.return();
+      }
+    }
+    finally{
+      if(_didIteratorError){
+        throw _iteratorError;
+      }
+    }
+  }
+}
+  },
+
 ]
 
 
